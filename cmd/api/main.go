@@ -246,5 +246,15 @@ func serveKey(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintln(w, string(data))
+	ret := struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}{
+		Username: "ctf",
+		Password: string(data),
+	}
+
+	b, _ := json.MarshalIndent(ret, "", "    ")
+
+	fmt.Fprintln(w, string(b))
 }
