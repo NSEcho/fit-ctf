@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"strings"
+	"syscall"
 )
 
 const correctPassword = "iTWasNotThaTHard?Right?123"
@@ -22,14 +22,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	userSlice := strings.Split(os.Args[2], " ")
+	syscall.Setuid(0)
+	syscall.Setgid(0)
 
 	commandSlice := []string{"-c"}
-	commandSlice = append(commandSlice, userSlice...)
+	commandSlice = append(commandSlice, os.Args[2])
 
 	cmd := exec.Command("/bin/bash", commandSlice...)
 	var out bytes.Buffer
 	cmd.Stdout = &out
+	cmd.Stderr = &out
 	err := cmd.Run()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error running command: %v\n", err)
