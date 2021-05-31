@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	listenAddr = "localhost:3000"
+	listenAddr = ":3000"
 	socketType = "tcp"
 
 	correctUsername = "second"
