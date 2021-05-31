@@ -1,0 +1,7 @@
+--- passwd	2021-05-31 07:44:11.170860044 +0000
++++ new_passwd	2021-05-31 07:44:33.841813925 +0000
+@@ -32,3 +32,4 @@
+ systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+ lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+ ctf:x:1000:1000::/home/ctf:/bin/bash
++second:x:1001:1001::/home/second:/bin/bash
